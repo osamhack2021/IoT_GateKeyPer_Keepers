@@ -60,7 +60,7 @@ $ yarn start or npm run start
 
 ## 팀 정보 (Team Information)
 - Boksung,Oh (boksung@sol-dynamics.com), Github Id: BoksungOh
-- 1 more user here,
+- Changhyun,Nam (tabloni0719@ajou.ac.kr), Github Id : TabloNi
 
 ## 저작권 및 사용권 정보 (Copyleft / End User License)
  * [MIT](https://github.com/osam2020-WEB/Sample-ProjectName-TeamName/blob/master/license.md)
