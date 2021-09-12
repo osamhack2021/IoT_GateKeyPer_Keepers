@@ -1,4 +1,7 @@
-### 1차 구성안
+### 1차 구성안(21.09.12ver)
+시스템 구성의 최소 요건
+
+
 #### [자물쇠 구성요소]
 <img src="https://user-images.githubusercontent.com/89676600/132986304-fe942aaf-be40-4fe7-b538-e9d0ccea4981.jpg" width="80%" height="80%">
 
