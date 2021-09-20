@@ -1,0 +1,44 @@
+/// 키역할 아두이노, 메인코드(시리얼)
+#include <Wire.h>
+#define BUTTON 8
+#define MAX_REQUEST 20
+
+
+int Lock_ID = 10; 
+bool button_trig = false;
+//버튼 트리거 구현중
+
+void setup() {
+  Wire.begin(); 
+  Serial.begin(9600); 
+  pinMode(BUTTON, INPUT_PULLUP);
+
+}
+
+void loop() {
+  if (Serial.available()){
+    String inString = Serial.readString();
+    Wire.beginTransmission(Lock_ID);
+    Wire.write(inString.c_str());
+    Serial.println(inString.c_str());
+    Wire.write('\n');
+    Wire.endTransmission(Lock_ID);
+    delay(10);
+    
+    Wire.requestFrom(Lock_ID, MAX_REQUEST);
+    int i = 0;
+    char inChar[MAX_REQUEST]={};
+    while(Wire.available()){
+      char ch = Wire.read();
+      if(ch != '\n'){
+        inChar[i] = ch;
+        i++;
+      }else{break;)
+    }
+    String inPacket = inChar;
+    Serial.println(inPacket);
+    delay(10);  
+  
+    delay(2000);
+  }
+}
