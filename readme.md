@@ -2,16 +2,12 @@
 <!-- ![Logo](https://logosbynick.com/wp-content/uploads/2018/03/final-logo-example.png)
 프로젝트명 또는 프로젝트 로고 이미지 **(택1)** -->
 
-![a1](https://user-images.githubusercontent.com/89676600/133629059-4683cd0a-2337-4267-a38a-08a35e21dc17.PNG)
-
-
-
+<img src="https://user-images.githubusercontent.com/89676600/134014996-9765eac4-832e-4bcf-9888-df70b026a703.jpg"  width="300" height="300"/>
 
 ## 프로잭트 소개
-- 설명 기입
+
 
 ## 기능 설명
- - 설명 기입
 
 ## 컴퓨터 구성 / 필수 조건 안내 (Prerequisites)
 <!--
@@ -70,3 +66,4 @@ $ yarn start or npm run start
  * [MIT](https://github.com/osam2020-WEB/Sample-ProjectName-TeamName/blob/master/license.md)
 
 This project is licensed under the terms of the MIT license.
+
