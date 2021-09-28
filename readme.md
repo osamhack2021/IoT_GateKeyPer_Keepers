@@ -1,69 +1,59 @@
-# Project name or Logo
-<!-- ![Logo](https://logosbynick.com/wp-content/uploads/2018/03/final-logo-example.png)
-프로젝트명 또는 프로젝트 로고 이미지 **(택1)** -->
-
-<img src="https://user-images.githubusercontent.com/89676600/134014996-9765eac4-832e-4bcf-9888-df70b026a703.jpg"  width="300" height="300"/>
-
-## 프로잭트 소개
+[![MIT License][license-shield]][license-url]
+[![LinkedIn][linkedin-shield]][linkedin-url]
 
 
-## 기능 설명
+<!-- PROJECT LOGO -->
+<br />
+<p align="center">
+  <a href="https://github.com/othneildrew/Best-README-Template">
+<img  src="https://user-images.githubusercontent.com/89676600/134014996-9765eac4-832e-4bcf-9888-df70b026a703.jpg"  width="300"  height="300"/>
+  </a>
 
-## 컴퓨터 구성 / 필수 조건 안내 (Prerequisites)
-<!--
-* ECMAScript 6 지원 브라우저 사용
-* 권장: Google Chrome 버젼 77 이상
--->
-하기와 같이, 3개의 구성요소가 한 세트로로 구성되어 있으며,
-각각의 구성 요소는 복수의 수량을 가질 수 있음.
-- 2개의 단독 하드웨어(자물쇠용 키 / 자물쇠 뭉치)
-- 1개의 PC-MCU(PC와 연결되어 데이터를 주고 받는 크래들)
+  <h3 align="center">2021 군장병 공개 SW 온라인 해커톤</h3>
+      <br />
 
-## 기술 스택 (Technique Used) 
-<!--
-### Server(back-end)
- -  nodejs, php, java 등 서버 언어 버전 
- - express, laravel, sptring boot 등 사용한 프레임워크 
- - DB 등 사용한 다른 프로그램 
- 
-### Front-end
- -  react.js, vue.js 등 사용한 front-end 프레임워크 
- -  UI framework
- - 기타 사용한 라이브러리
--->
+  <p align="center">
+ <strong>Language</strong>
+    <br />
+    <br />
+    <a href="https://example.com/">한국어</a>
+     ·
+<a href="https://example.com/">English</a>
+  </p>
+</p>
 
-### Hardware / IDE
- - Arduino Nano(Main MCU)
- - Arduino IDE
+<!-- ABOUT THE PROJECT -->
+## About The Project
 
-### App
- - Android Studio(Version ?)
+**게이트키퍼**는 수많은 물리적 자물쇠와 키를 이론상 한 개로 통일하고, 열림/잠김과 같은 로그를 확보하여 기존의 물리적 자물쇠의 한계를 극복하고자 하는 시스템을 개발하기 위한 프로젝트 입니다.
 
-## 설치 안내 (Installation Process)
-```bash
-$ git clone git주소
-$ yarn or npm install
-$ yarn start or npm run start
-```
+<!-- Explore -->
+## Explore
 
-## 프로젝트 사용법 (Getting Started)
-**마크다운 문법을 이용하여 자유롭게 기재**
+- #### 시스템에 대한 정보를 문서화한 [***Git Book***](https://bit.ly/gatekeyper_gitbook)
+- #### 프로젝트 협업을 위한 [***Notion***](https://bit.ly/gatekeyper_notion)
+- #### 솔루션 사용자를 위한 [***Landing Page***](https://example.com)
 
-<!--
-잘 모를 경우
-구글 검색 - 마크다운 문법
-[https://post.naver.com/viewer/postView.nhn?volumeNo=24627214&memberNo=42458017](https://post.naver.com/viewer/postView.nhn?volumeNo=24627214&memberNo=42458017)
+<!-- LICENSE -->
+## License
 
- 편한 마크다운 에디터를 찾아서 사용
- 샘플 에디터 [https://stackedit.io/app#](https://stackedit.io/app#)
---> 
+Distributed under the MIT License. See `LICENSE` for more information.
 
-## 팀 정보 (Team Information)
+<!-- CONTACT -->
+## Contact
+
 - Boksung,Oh (boksung@sol-dynamics.com), Github Id: BoksungOh
 - Changhyun,Nam (tabloni0719@ajou.ac.kr), Github Id : TabloNi
+<!-- Copyright -->
+## Copyright
 
-## 저작권 및 사용권 정보 (Copyleft / End User License)
- * [MIT](https://github.com/osam2020-WEB/Sample-ProjectName-TeamName/blob/master/license.md)
+Copyrightⓒ 2021 Keeper, All rights reserved.
 
-This project is licensed under the terms of the MIT license.
 
+
+<!-- MARKDOWN LINKS & IMAGES -->
+<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
+[license-shield]: https://img.shields.io/github/license/othneildrew/Best-README-Template.svg?style=for-the-badge
+[license-url]: https://github.com/osamhack2021/IoT_GateKeyPer_Keeper/blob/master/LICENSE.txt
+[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
+[linkedin-url]: https://linkedin.com/in/othneildrew
