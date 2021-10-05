@@ -2,9 +2,7 @@
 /// T(설정명령) + 년(00~99) + 월(01~12) + 일(01~31) + 시(00~23) + 분(00~59) + 초(00~59) + 요일(1~7, 일1 월2 화3 수4 목5 금6 토7)
 /// 예: T1605091300002 (2016년 5월 9일 13시 00분 00초 월요일)
 
-
-
-출처: https://deneb21.tistory.com/327 [Do It Yourself!]
+/// 출처: https://deneb21.tistory.com/327 [Do It Yourself!]
 #include <Wire.h>
 
 #define MAX_REQUEST 50
