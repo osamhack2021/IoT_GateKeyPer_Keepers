@@ -1,26 +1,42 @@
 // 락 역할 아두이노 (시리얼 X)
 #include <Wire.h>
 
+#define LED_B 11  //PWM 255 ~ 100
+#define LED_G 10  //PWM 255 ~ 100
+#define LED_R 9   //PWM 255 ~ 100
+#define LOCKER 5
+
+
 #define ReadDataBytes 20;
 int Lock_ID = 10;
 int State_Trig = 0;
-int Created_Date = 210920;
+int Created_Date = 10920;
 int Created_User = 01320;
 void setup()
 {
+  pinMode(LED_R, OUTPUT);
+  pinMode(LED_G, OUTPUT);
+  pinMode(LED_B, OUTPUT);
+  pinMode(LOCKER, OUTPUT);
+  pinMode(6, OUTPUT);
+  
+  LED_Write('C');
+  digitalWrite(LOCKER,LOW);
+  digitalWrite(6, LOW);
+  delay(200);
   Wire.begin(Lock_ID);
   Wire.onReceive(receiveData);
   Wire.onRequest(requestEvent);
   Serial.begin(9600);
-
-  pinMode(4, OUTPUT); //빨강
-  pinMode(5, OUTPUT); //파랑
-  pinMode(6, OUTPUT); //초록
+  
+  
 }
 
 void loop()
 {
+  
 }
+
 
 void receiveData(int bytes)
 {
@@ -74,9 +90,8 @@ void requestEvent()
     Wire.write('\n');
     State_Trig = 0;
     delay(100);
-    digitalWrite(6, LOW);
-    digitalWrite(5, LOW);
-    digitalWrite(4, HIGH);
+      LED_Write('R');
+
     break;
   case 2:
     Serial.println("Debug Point 6");
@@ -92,13 +107,42 @@ void requestEvent()
     Serial.println("Debug Point 9");
     Wire.write("Open Door-lock\n");
     State_Trig = 0;
-    digitalWrite(6, HIGH);
-    digitalWrite(5, LOW);
-    digitalWrite(4, LOW);
+    LED_Write('G');
+    digitalWrite(LOCKER,HIGH);
+    delay(700);
+    digitalWrite(LOCKER,LOW);
+    delay(1000);
+
     break;
   default:
     Serial.println("Debug Point 8");
     Wire.write("Data Come in\n");
     break;
   }
+}
+
+
+void LED_Write(char data){
+  switch(data){
+    case 'R':
+      analogWrite(LED_R,100);
+      analogWrite(LED_G,255);
+      analogWrite(LED_B,255);
+      break;
+    case 'G':
+      analogWrite(LED_R,255);
+      analogWrite(LED_G,100);
+      analogWrite(LED_B,255);
+      break;
+    case 'B':
+      analogWrite(LED_R,255);
+      analogWrite(LED_G,255);
+      analogWrite(LED_B,100);
+      break;
+    case 'C':
+      analogWrite(LED_R,255);
+      analogWrite(LED_G,255);
+      analogWrite(LED_B,255);
+  }
+  return;
 }
