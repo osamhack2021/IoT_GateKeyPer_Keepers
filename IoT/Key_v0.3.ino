@@ -70,21 +70,23 @@ void setup()
   delay(200);
   finger.begin(57600);
   delay(5);
+
+  
  if (finger.verifyPassword()) {
     Serial.println("Found fingerprint sensor!");
   } else {
     Serial.println("Did not find fingerprint sensor :(");
     while (1) { delay(1); }
   }
-  Serial.println(F("Reading sensor parameters"));
+  //Serial.println(F("Reading sensor parameters"));
   finger.getParameters();
-  Serial.print(F("Status: 0x")); Serial.println(finger.status_reg, HEX);
-  Serial.print(F("Sys ID: 0x")); Serial.println(finger.system_id, HEX);
-  Serial.print(F("Capacity: ")); Serial.println(finger.capacity);
-  Serial.print(F("Security level: ")); Serial.println(finger.security_level);
-  Serial.print(F("Device address: ")); Serial.println(finger.device_addr, HEX);
-  Serial.print(F("Packet len: ")); Serial.println(finger.packet_len);
-  Serial.print(F("Baud rate: ")); Serial.println(finger.baud_rate);
+  //Serial.print(F("Status: 0x")); Serial.println(finger.status_reg, HEX);
+  //Serial.print(F("Sys ID: 0x")); Serial.println(finger.system_id, HEX);
+  //Serial.print(F("Capacity: ")); Serial.println(finger.capacity);
+  //Serial.print(F("Security level: ")); Serial.println(finger.security_level);
+  //Serial.print(F("Device address: ")); Serial.println(finger.device_addr, HEX);
+  //Serial.print(F("Packet len: ")); Serial.println(finger.packet_len);
+  //Serial.print(F("Baud rate: ")); Serial.println(finger.baud_rate);
   finger.getTemplateCount();
   if (finger.templateCount == 0) {
     Serial.print("Sensor doesn't contain any fingerprint data. Please run the 'enroll' example.");
@@ -100,148 +102,138 @@ void setup()
 }
 
 void loop(){
-  switch(step_trig){
-    case 0 : // 대기상태
-      if(digitalRead(BUTTON)==0){
-        Serial.println("[DBG001] Button pushed, ID-Scanning!");
-        Lock_ID = ID_Scanning();
-        if(Lock_ID != MAX_ID_ADDRESS){
-          Serial.println("[DBG004] Next Step");
-          step_trig = 1;
-        }
-      }
-      delay(1000);
-      break;
-    case 1 : // 연결된 제품 통신 시도 
-      Serial.println("[DBG011] Communication Level");
-      String Packet = I2C_Request(Lock_ID, "Lock_ID");
-      Serial.println(Packet);
-      if(Packet.equals("fail")||Packet.equals("")){
-        Serial.println("[DBG012] Failure Test");
-        step_trig = 0;
-      }else{
-        LED_Write('R');
-        Serial.println("[DBG013] Step 1 to 2");
-        step_trig = 2;
-        //EEPROM에 Packet 결과 저장하는 함수 추가
-        //Buzzer 정상연결 알림
-        delay(1000);
-      }
-      Serial.println("??");
-      break;
-    case 2 : // 지문인식 시도
-      Serial.println("[DBG020] Finger Scan Start ");
-      digitalWrite(FINGER, HIGH);
-      timer1_trig = millis();
-      while(finger_trig == false && (millis() - timer1_trig < SCAN_WAITING_TIME))
-      {
-        getFingerprintID();
-        delay(100);
-      }
-      if (finger_trig == true)    //이부분 어떻게 하고 넘어갈지 고민.
-      {
-        Serial.print("[DBG021] Scanning Complete, User ID : ");
-        Serial.println(User_ID);
-        step_trig = 3;
-        finger_trig = false;
-      }
-      else
-      {
-        Serial.println("[DBG024] Time-out, Please push the button");
-        step_trig = 0;
-      }
-      delay(1000);
-      break;
-      
-    case 3 :
-      Wire.beginTransmission(Lock_ID);
-      Wire.write(String(User_ID).c_str());
-      Wire.write('#');
-      Wire.write(String(Open_Date).c_str());
-      Wire.write('#');
-      Wire.write(String(Key_ID).c_str());
-      Wire.write('\n');
-      Serial.print("User_ID : ");
-      Serial.print(User_ID);
-      Serial.print("  Open_Date : ");
-      Serial.print(Open_Date);
-      Serial.print("  Key_ID : ");
-      Serial.println(Key_ID);
-      byte error = Wire.endTransmission(Lock_ID);
-      delay(10);
-          //연결이 정상일 경우 Request 해야하나 이부분은 미구현.
-      if (error == 0)
-      {
-        //      Wire.requestFrom(Lock_ID, MAX_REQUEST);
-        //      int i = 0;
-        //      char inChar[MAX_REQUEST]={};
-        //      while(Wire.available()){
-        //        char ch = Wire.read();
-        //        if(ch != '\n'){
-        //          inChar[i] = ch;
-        //          i++;
-        //        }else{break;}
-        //      }
-        //      String inPacket = inChar;
-        //      Serial.println(inPacket);
-        //      delay(10);
-        Serial.println("[DBG031] Data Trans Complete");
-        // 키의 부저에서 정상연결 알림
-        step_trig = 4;
-      }
-      else
-      {
-        Serial.println("[ERR041] Connection Error");
-        step_trig = 0;
-      }
-      break;
-    case 4 :
-      Wire.beginTransmission(Lock_ID);
-      Wire.write("Open");
-      error = Wire.endTransmission(Lock_ID);
-      delay(10);
-
-      //연결이 정상일 경우,
-      if (error == 0)
-      {
-        Wire.requestFrom(Lock_ID, MAX_REQUEST);
-        int i = 0;
-        char inChar[MAX_REQUEST] = {};
-        while (Wire.available())
-        {
-          char ch = Wire.read();
-          if (ch != '\n')
-          {
-            inChar[i] = ch;
-            i++;
-          }
-          else
-          {
-            break;
-          }
-        }
-        String inPacket = inChar;
-        Serial.println(inPacket);
-        delay(10);
-        Serial.println("[DBG041] Data Trans Complete");
-        delay(100);
-        digitalWrite(4, LOW);
-        digitalWrite(5, LOW);
-        digitalWrite(6, HIGH);
-        // 키의 부저에서 정상연결 알림
-      }
-      else
-      {
-        Serial.println("[ERR041] Connection Error");
-      }
+  if(step_trig == 0 && digitalRead(BUTTON)==0){
+    Serial.println("[DBG001] Button pushed, ID-Scanning!");
+    Lock_ID = ID_Scanning();
+    if(Lock_ID != MAX_ID_ADDRESS){
+      Serial.println("[DBG004] Next Step");
+      step_trig = 1;
+    }
+    delay(1000);
+  }
+  else if(step_trig == 1){   // Step 1 : 연결된 제품 통신 시도 
+    Serial.println("[DBG011] Communication Level");
+    String Packet = I2C_Request(Lock_ID, "Lock_ID");
+    Serial.println(Packet);
+    if(Packet.equals("fail")||Packet.equals("")){
+      Serial.println("[DBG012] Failure Test");
       step_trig = 0;
-      break;   
-      
+    }else{
+      LED_Write('R');
+      Serial.println("[DBG013] Step 1 to 2");
+      step_trig = 2;
+      //EEPROM에 Packet 결과 저장하는 함수 추가
+      //Buzzer 정상연결 알림
+      delay(1000);
+    }
+    Serial.println("??");
+  }
+  
+  else if(step_trig == 2){   //Step 2 : 지문인식 시도
+    Serial.println("[DBG020] Finger Scan Start ");
+    digitalWrite(FINGER, HIGH);
+    timer1_trig = millis();
+    while(finger_trig == false && (millis() - timer1_trig < SCAN_WAITING_TIME))
+    {
+      User_ID = getFingerprintID();
+      delay(100);
+    }
+    if (finger_trig == true)    //이부분 어떻게 하고 넘어갈지 고민.
+    {
+      Serial.print("[DBG021] Scanning Complete, User ID : ");
+      Serial.println(User_ID);
+      step_trig = 3;
+      finger_trig = false;
+    }
+    else
+    {
+      Serial.println("[DBG024] Time-out, Please push the button");
+      step_trig = 0;
+    }
+    delay(1000);
+  }
+  
+  else if(step_trig == 3){   //Step 3 : 데이터 통신 시도
+    Wire.beginTransmission(Lock_ID);
+    Wire.write(String(User_ID).c_str());
+    Wire.write('#');
+    Wire.write(String(Open_Date).c_str());
+    Wire.write('#');
+    Wire.write(String(Key_ID).c_str());
+    Wire.write('\n');
+    Serial.print("User_ID : ");
+    Serial.print(User_ID);
+    Serial.print("  Open_Date : ");
+    Serial.print(Open_Date);
+    Serial.print("  Key_ID : ");
+    Serial.println(Key_ID);
+    byte error = Wire.endTransmission(Lock_ID);
+    delay(10);
+        //연결이 정상일 경우 Request 해야하나 이부분은 미구현.
+    if (error == 0)
+    {
+      //      Wire.requestFrom(Lock_ID, MAX_REQUEST);
+      //      int i = 0;
+      //      char inChar[MAX_REQUEST]={};
+      //      while(Wire.available()){
+      //        char ch = Wire.read();
+      //        if(ch != '\n'){
+      //          inChar[i] = ch;
+      //          i++;
+      //        }else{break;}
+      //      }
+      //      String inPacket = inChar;
+      //      Serial.println(inPacket);
+      //      delay(10);
+      Serial.println("[DBG031] Data Trans Complete");
+      // 키의 부저에서 정상연결 알림
+      step_trig = 4;
+    }
+    else
+    {
+      Serial.println("[ERR041] Connection Error");
+      step_trig = 0;
+    }
+  }else if(step_trig == 4){
+    Wire.beginTransmission(Lock_ID);
+    Wire.write("Open");
+    byte error = Wire.endTransmission(Lock_ID);
+    delay(10);
+
+    //연결이 정상일 경우,
+    if (error == 0)
+    {
+      Wire.requestFrom(Lock_ID, MAX_REQUEST);
+      int i = 0;
+      char inChar[MAX_REQUEST] = {};
+      while (Wire.available())
+      {
+        char ch = Wire.read();
+        if (ch != '\n')
+        {
+          inChar[i] = ch;
+          i++;
+        }
+        else
+        {
+          break;
+        }
+      }
+      String inPacket = inChar;
+      Serial.println(inPacket);
+      delay(10);
+      Serial.println("[DBG041] Data Trans Complete");
+      delay(100);
+      LED_Write('G');
+      // 키의 부저에서 정상연결 알림
+    }
+    else
+    {
+      Serial.println("[ERR041] Connection Error");
+    }
+    step_trig = 0;
   }
   delay(100);
-  if(step_trig == 2){
-    Serial.println(step_trig);
-  }
  /*
   if ((millis() - timer2_trig > 1000) && (step_trig == 1 || step_trig == 2 || step_trig == 3 || step_trig == 4))
   {
@@ -462,7 +454,8 @@ uint8_t getFingerprintID() {
   // found a match!
   Serial.print("Found ID #"); Serial.print(finger.fingerID);
   Serial.print(" with confidence of "); Serial.println(finger.confidence);
-
+  delay(1000);
+  finger_trig = true;
   return finger.fingerID;
 }
 
