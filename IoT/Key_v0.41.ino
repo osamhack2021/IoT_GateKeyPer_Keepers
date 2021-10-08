@@ -1,15 +1,12 @@
 /***************************************************
   This is an example sketch for our optical Fingerprint sensor
-
   Designed specifically to work with the Adafruit BMP085 Breakout
   ----> http://www.adafruit.com/products/751
-
   These displays use TTL Serial to communicate, 2 pins are required to
   interface
   Adafruit invests time and resources providing this open source code,
   please support Adafruit and open-source hardware by purchasing
   products from Adafruit!
-
   Written by Limor Fried/Ladyada for Adafruit Industries.
   BSD license, all text above must be included in any redistribution
  ****************************************************/
@@ -21,7 +18,20 @@
 SoftwareSerial mySerial(2, 3);
 Adafruit_Fingerprint finger = Adafruit_Fingerprint(&mySerial);
 
-#define MAX_REQUEST 50
+//#define TEST_DEBUG    //주석 처리하면 시리얼이 날아감
+#ifdef TEST_DEBUG
+#define Sprintln(a)     (Serial.println(a))
+#define Sprint(a)       (Serial.print(a))
+#define Sprintln2(a,b)  (Serial.println(a,b))
+#define Sprint2(a,b)    (Serial.print(a,b))
+#else 
+#define Sprintln(a)     
+#define Sprint(a)       
+#define Sprintln2(a,b)  
+#define Sprint2(a,b)    
+#endif
+
+#define MAX_REQUEST 40
 #define SCAN_WAITING_TIME 10000 //10000ms
 #define GREEN_WAITING_TIME 5000 //5000ms
 #define MAX_ID_ADDRESS 100       //100개의 ID 보유 가능
@@ -36,21 +46,22 @@ Adafruit_Fingerprint finger = Adafruit_Fingerprint(&mySerial);
 #define SOFT_TX 3
 #define SOFT_RX 2
 
-int Lock_ID = 0;
-int Key_ID = 13;         //임시 키 ID
-int Open_Date = 10920; //임시 날짜 +200000
+uint8_t Lock_ID = 0;
+uint8_t Key_ID = 12;         //임시 키 ID
+uint8_t Create_Date = 11008; //임시 날짜 +200000
+uint8_t Create_Time = 882;   // 14:42 -> 14*60+42 = 882 min
+uint8_t Open_Time = 112;     // Create_Time + 112 min = 16:34
+
 
 bool available_trig = true;
 bool button_trig = false; //버튼 누른 후 특정 시간만큼 눌린상태를 만들기 위한 트리거
 bool finger_trig = false;
 bool time_trig = false;
 
-double timer1_trig = 0;
-double timer2_trig = 0;
-double step5_timer = 0;
+unsigned long Timer_trig = 0;
 
-int step_trig = 0; //단계별로 진입 프로그래밍
-int User_ID;
+uint8_t step_trig = 0; //단계별로 진입 프로그래밍
+uint8_t User_ID;
 
 byte seconds, minutes, hours, day, date, month, year;
 
@@ -58,10 +69,14 @@ char weekDay[4];
 byte tMSB, tLSB;
 float temp3231;
 
+
+
+
+
 void setup()
 {
   Wire.begin();
-  Serial.begin(9600);
+  Serial.begin(57600);
     
   pinMode(BUTTON, INPUT_PULLUP);
   pinMode(LED_R, OUTPUT);
@@ -78,28 +93,28 @@ void setup()
 
   
  if (finger.verifyPassword()) {
-    Serial.println("Found fingerprint sensor!");
+    Sprintln("Found fingerprint sensor!");
   } else {
-    Serial.println("Did not find fingerprint sensor :(");
+    Sprintln("Did not find fingerprint sensor :(");
     while (1) { delay(1); }
   }
-  //Serial.println(F("Reading sensor parameters"));
-  finger.getParameters();
-  //Serial.print(F("Status: 0x")); Serial.println(finger.status_reg, HEX);
-  //Serial.print(F("Sys ID: 0x")); Serial.println(finger.system_id, HEX);
-  //Serial.print(F("Capacity: ")); Serial.println(finger.capacity);
-  //Serial.print(F("Security level: ")); Serial.println(finger.security_level);
-  //Serial.print(F("Device address: ")); Serial.println(finger.device_addr, HEX);
-  //Serial.print(F("Packet len: ")); Serial.println(finger.packet_len);
-  //Serial.print(F("Baud rate: ")); Serial.println(finger.baud_rate);
-  finger.getTemplateCount();
-  if (finger.templateCount == 0) {
-    Serial.print("Sensor doesn't contain any fingerprint data. Please run the 'enroll' example.");
-  }
-  else {
-    Serial.println("Waiting for valid finger...");
-      Serial.print("Sensor contains "); Serial.print(finger.templateCount); Serial.println(" templates");
-  }
+  //Sprintln(F("Reading sensor parameters"));
+  //finger.getParameters();
+  //Sprint(F("Status: 0x")); Sprintln(finger.status_reg, HEX);
+  //Sprint(F("Sys ID: 0x")); Sprintln(finger.system_id, HEX);
+  //Sprint(F("Capacity: ")); Sprintln(finger.capacity);
+  //Sprint(F("Security level: ")); Sprintln(finger.security_level);
+  //Sprint(F("Device address: ")); Sprintln(finger.device_addr, HEX);
+  //Sprint(F("Packet len: ")); Sprintln(finger.packet_len);
+  //Sprint(F("Baud rate: ")); Sprintln(finger.baud_rate);
+//  finger.getTemplateCount();
+//  if (finger.templateCount == 0) {
+//    Sprint("Sensor doesn't contain any fingerprint data. Please run the 'enroll' example.");
+//  }
+//  else {
+//    Sprintln("Waiting for valid finger...");
+//      Sprint("Sensor contains "); Sprint(finger.templateCount); Sprintln(" templates");
+//  }
 
   digitalWrite(FINGER, LOW);
   delay(100);
@@ -107,17 +122,18 @@ void setup()
 
 void loop(){
   if(step_trig == 0 && digitalRead(BUTTON)==0){   //Step 0 : 버튼 인식 준비
-    Serial.println("[DBG001] Button pushed, ID-Scanning!");
+    Sprintln("[DBG001] Button pushed, ID-Scanning!");
     Lock_ID = ID_Scanning(0);
     if(Lock_ID != MAX_ID_ADDRESS){
-      Serial.println("[DBG004] Next Step");
+      Sprintln("[DBG004] Next Step");
       step_trig = 1;
     }
     delay(1000);
-  }else if(step_trig == 0 && Serial.available()){
+  }
+  else if(step_trig == 0 && Serial.available()){
     char a = Serial.read();
     if(a == 't' && time_trig == 0){
-      Serial.println("[DBG201] Timer display"); 
+      Sprintln("[DBG201] Timer display"); 
       time_trig = 1;
     }
     else if( a== 't' && time_trig == 1){
@@ -127,14 +143,16 @@ void loop(){
     RTC_Read();
     RTC_Print();
     delay(500);
-  }else if(step_trig == 1){   // Step 1 : 연결된 제품 통신 시도 
-    Serial.println("[DBG010] Step1 : Communication Level");
-    Serial.println(I2C_Request(Lock_ID, "Lock_ID"));
-    String Packet = I2C_Request(Lock_ID, "Lock_ID");
-    Serial.print("[DBG011] Lock_ID Packet Request Data : ");
-    Serial.println(Packet);
-    if(Packet.equals("fail")||Packet.equals("")){
-      Serial.println("[DBG011] Failure Test");
+  }
+  else if(step_trig == 1){   // Step 1 : 연결된 제품 통신 시도 
+    Sprintln("[DBG010] Step1 : Communication Level");
+
+    String Packet_receive = I2C_Request(Lock_ID, "Lock_ID");
+    
+    Sprint("[DBG011] Lock_ID Packet Request Data : ");
+    Sprintln(Packet_receive);
+    if(Packet_receive.equals("fail")||Packet_receive.equals("")){
+      Sprintln("[DBG011] Failure Test");
       step_trig = 0;
     }else{
       LED_Write('R');
@@ -144,94 +162,151 @@ void loop(){
       delay(1000);
     }
   }else if(step_trig == 2){   //Step 2 : 지문인식 시도
-    Serial.println("[DBG020] Step2 : Finger Scan Start ");
+    Sprintln("[DBG020] Step2 : Finger Scan Start ");
     digitalWrite(FINGER, HIGH);
-    timer1_trig = millis();
-    while(finger_trig == false && (millis() - timer1_trig < SCAN_WAITING_TIME))
+    Timer_trig = millis();
+    while(finger_trig == false && (millis() - Timer_trig < SCAN_WAITING_TIME))
     {
       User_ID = getFingerprintID();
       delay(100);
     }
     if (finger_trig == true)    //이부분 어떻게 하고 넘어갈지 고민.
     {
-      Serial.print("[DBG021] Scanning Complete, User ID : ");
-      Serial.println(User_ID);
+      Sprint("[DBG021] Scanning Complete, User ID : ");
+      Sprintln(User_ID);
       step_trig = 3;
       finger_trig = false;
     }
     else
     {
-      Serial.println("[DBG024] Time-out, Please push the button");
+      Sprintln("[DBG024] Time-out, Please push the button");
       step_trig = 0;
     }
     delay(1000);
-  }else if(step_trig == 3){   //Step 3 : 데이터 통신 시도
-
-    String Packet_push = String(User_ID)+'#'+String(Open_Date)+'#'+String(Key_ID)+'\n';
+  }
+  
+  else if(step_trig == 3){   //Step 3 : 데이터 통신 시도
+    uint8_t Today_Date = 11009;
+    uint8_t Today_Time = 964;
+    String Packet_push = String(User_ID)+'#'+String(Today_Date)+'#'+String(Today_Time)+'#'+String(Key_ID)+'\n';
+    String Packet_receive = I2C_Request(Lock_ID, String(Packet_push.c_str()));
+    
+    /*
     //현재시간 불러오기 (형식 미정) 
     RTC_Read();
     RTC_Print();
+    */
     
-    Serial.println("[DBG031] I2C Communication");
-    Serial.print("[DBG032] Packet Push : ");
-    Serial.println(Packet_push);
-    String Packet = I2C_Request(Lock_ID, String(Packet_push.c_str()));
-    Serial.print("[DBG033] Feedback Packet : ");
-    Serial.println(Packet);
+    Sprintln("[DBG031] I2C Communication");
+    Sprint("[DBG032] Packet Push : ");
+    Sprintln(Packet_push);
+    Sprint("[DBG033] Feedback Packet : ");
+    Serial.println(Packet_receive);
     
-    if(Packet.equals("fail")||Packet.equals("")){
-      Serial.println("[DBG034] Failure Test");
+    if(Packet_receive.equals("fail")||Packet_receive.equals("")){
+      Sprintln("[DBG034] Failure Test");
       step_trig = 0;
     }else{
-      Serial.println("[DBG031] Data Trans Complete");
-      // 키의 EEPROM에 데이터를 씀.
-      step_trig = 4;
-    }
-    
-  }else if(step_trig == 4){   //Step 4 : 열림 요청 데이터 통신
+      Sprintln("[DBG031] Data Trans Complete");
+      /* 락 : 
+       * ID 7 : 총기함 - 당직사령(ID17)만 열수있음 => 하루지나면 데이터 증발
+       * ID 8 : 총기함 - 당직사관(ID18)만 열수있음 => 하루지나면 데이터 증발
+       * ID 9 : 이발실 - 아무나 열수있지만 데이터는 수집
+       * -> 날짜가 만약 하루가 지났을 경우, 업데이트가 필요하며 열리지 않음
+       * 
+       * 키 : 
+       * ID 12
+       * ID 13
+       */
 
-    String Packet = I2C_Request(Lock_ID, "Open");
-    
-    if(Packet.equals("fail")||Packet.equals("")){
-      Serial.println("[DBG042] Failure Test");
-      step_trig = 0;
-    }else{
-      Serial.println("[DBG041] Data Trans Complete");
-      // 키의 EEPROM에 데이터를 씀.
-      LED_Write('G');
-      step_trig = 0;
-      delay(500);
     }
-    step_trig = 5;
-  }else if (step_trig == 5){    //Step 5 : 상태 확인, Step 0으로 전환
-    step5_timer = millis();
-    if(millis() - step5_timer < GREEN_WAITING_TIME && digitalRead(BUTTON)==1){
-      if(ID_Scanning(Lock_ID) == 256){
-        Serial.println("[DBG051] I2C Disconnect");
-        step_trig = 0;
-      }else{
-        Serial.println("[DBG052] Staying connected");
+  }
+      /*
+      Serial.print("D-Day");
+      Serial.println(Today_Date - Create_Date);
+      Serial.print("User ID & Lock ID");
+      Serial.print(User_ID);
+      Serial.print("       ");
+      Serial.println(Lock_ID);
+      if(Today_Date - Create_Date < 2){   //권한 있어야 갈수있는 키
+        if(User_ID==17&&Lock_ID==7){
+          step_trig = 4;
+        }else if(User_ID==18 && Lock_ID==8){
+          step_trig = 4;
+        }
       }
+      
+      if((User_ID==17||User_ID==18||User_ID==19) && Lock_ID==9){  //권한 없어도 접근가능 키
+        Serial.println("For all user");
+        step_trig = 4;
+      }else{
+        Serial.println("Date Over");
+        step_trig = 8;
+      }
+    }
+  }
+  
+  else if(step_trig == 4){   //Step 4 : 열림 요청 데이터 통신
+    Wire.beginTransmission(Lock_ID);
+    Wire.write("Open");
+    Serial.println("open");
+    byte error = Wire.endTransmission(Lock_ID);
+    delay(10);
+
+    //연결이 정상일 경우,
+    if (error == 0){
+      Wire.requestFrom(Lock_ID, MAX_REQUEST);
+      int i = 0;
+      char inChar[MAX_REQUEST] = {};
+      while (Wire.available())
+      {
+        char ch = Wire.read();
+        if (ch != '\n')
+        {
+          inChar[i] = ch;
+          i++;
+        }
+        else
+        {
+          break;
+        }
+      }
+      String inPacket = inChar;
+      Serial.println(inPacket);
+      delay(10);
+      Serial.println("[DBG041] Data Trans Complete");
+      delay(100);
+      LED_Write('G');
+    
+    step_trig = 5;
+    Timer_trig = millis();
+    }
+  }
+  
+  else if (step_trig == 5){    //Step 5 : 상태 확인, Step 0으로 전환
+    if(((millis() - Timer_trig) < GREEN_WAITING_TIME) && digitalRead(BUTTON)==1){
+      Sprintln("DBG 1");
     }else{
+      Sprintln("DBG 2");
+      LED_Write('C');
       step_trig = 0;
     }
     delay(500);
+  }else if(step_trig == 8){     //Step 8 : 날짜 지남, 업데이트 필요 도시
+    for(int i = 0; i <4; i++){
+      LED_Write('B');
+      delay(500);
+      LED_Write('C');
+      delay(500);
+    }
+    step_trig = 0;
   }
+*/
+  
   delay(100);
 }
 
 //===============================================
-
-
-
-
-
-
-
-
-
-
-
 
 byte decToBcd(byte val){
   return ( (val/10*16) + (val%10) );
@@ -275,49 +350,49 @@ void RTC_Read(){
 }
 
 void RTC_Print(){   //날짜 6자리 고정 기능 아직 미구현
-  Serial.print(weekDay);
-  Serial.print(year, DEC);
-  Serial.print("/");
-  Serial.print(month, DEC);
-  Serial.print("/");
-  Serial.print(date, DEC);
-  Serial.print(" ");
-  Serial.print(hours, DEC); 
-  Serial.print(":"); 
-  Serial.print(minutes, DEC); 
-  Serial.print(":"); 
-  Serial.println(seconds, DEC); 
+  Sprint(weekDay);
+  Sprint2(year, DEC);
+  Sprint("/");
+  Sprint2(month, DEC);
+  Sprint("/");
+  Sprint2(date, DEC);
+  Sprint(" ");
+  Sprint2(hours, DEC); 
+  Sprint(":"); 
+  Sprint2(minutes, DEC); 
+  Sprint(":"); 
+  Sprintln2(seconds, DEC); 
 }
 
 int ID_Scanning(int address){
   if(address == 0){
-    Serial.println("[DBG400] Address Searching");
+    Sprintln("[DBG400] Address Searching");
     for (address = 1; address < MAX_ID_ADDRESS; address++){
       if(address == 87){ address++; }
       Wire.beginTransmission(address);
       byte error = Wire.endTransmission();
-      Serial.println(address);
+      Sprintln(address);
       if (error == 0){
-        Serial.print("[DBG002] I2C device found : ");
-        Serial.println(address);
+        Sprint("[DBG002] I2C device found : ");
+        Sprintln(address);
         break;
       }
       else if (error == 4){
-        Serial.print("[ERR001] Unknown error : ");
-        Serial.println(address);
+        Sprint("[ERR001] Unknown error : ");
+        Sprintln(address);
       }
     }
-    Serial.println("[DBG003] Not found!");
+    Sprintln("[DBG003] Not found!");
     delay(200);
     return address;
   }else{
-    Serial.println("[DBG401] Address Connect Checking");
+    Sprintln("[DBG401] Address Connect Checking");
     Wire.beginTransmission(address);
     byte error = Wire.endTransmission();
     if (error == 0){
-      Serial.print("[DBG002] I2C device disconnect : ");
-      Serial.println(address);
-      return 256;
+      Sprint("[DBG002] I2C device disconnect : ");
+      Sprintln(address);
+      return 150;
     }
   }
 }
@@ -329,47 +404,42 @@ String I2C_Request(int address, String packet){
   Wire.write(packet.c_str());
   Serial.println(packet.c_str());
   Wire.write('\n');
-  delay(100);
   byte error = Wire.endTransmission(address);
   if(error == 0){
     Wire.requestFrom(address, MAX_REQUEST);
     int i = 0;
     while(Wire.available()){
-      
       char ch = Wire.read();
       if(ch != '\n'){
         inChar[i] = ch;
         i++;
+        Serial.println(ch);
       }else{
         break;
       }
     }
   }else{
-    Serial.println("Falure");
     return "fail";
   }
-  String A = inChar;
-  Serial.println(A);
-  Serial.println(inChar);
-  return A;
+  return inChar;
 }
 
 void LED_Write(char data){
   switch(data){
     case 'R':
-      analogWrite(LED_R,100);
+      analogWrite(LED_R,150);
       analogWrite(LED_G,255);
       analogWrite(LED_B,255);
       break;
     case 'G':
       analogWrite(LED_R,255);
-      analogWrite(LED_G,100);
+      analogWrite(LED_G,150);
       analogWrite(LED_B,255);
       break;
     case 'B':
       analogWrite(LED_R,255);
       analogWrite(LED_G,255);
-      analogWrite(LED_B,100);
+      analogWrite(LED_B,150);
       break;
     case 'C':
       analogWrite(LED_R,255);
@@ -384,19 +454,19 @@ uint8_t getFingerprintID() {
   uint8_t p = finger.getImage();
   switch (p) {
     case FINGERPRINT_OK:
-      Serial.println("Image taken");
+      Sprintln("Image taken");
       break;
     case FINGERPRINT_NOFINGER:
-      Serial.println("No finger detected");
+      Sprintln("No finger detected");
       return p;
     case FINGERPRINT_PACKETRECIEVEERR:
-      Serial.println("Communication error");
+      Sprintln("Communication error");
       return p;
     case FINGERPRINT_IMAGEFAIL:
-      Serial.println("Imaging error");
+      Sprintln("Imaging error");
       return p;
     default:
-      Serial.println("Unknown error");
+      Sprintln("Unknown error");
       return p;
   }
 
@@ -405,43 +475,43 @@ uint8_t getFingerprintID() {
   p = finger.image2Tz();
   switch (p) {
     case FINGERPRINT_OK:
-      Serial.println("Image converted");
+      Sprintln("Image converted");
       break;
     case FINGERPRINT_IMAGEMESS:
-      Serial.println("Image too messy");
+      Sprintln("Image too messy");
       return p;
     case FINGERPRINT_PACKETRECIEVEERR:
-      Serial.println("Communication error");
+      Sprintln("Communication error");
       return p;
     case FINGERPRINT_FEATUREFAIL:
-      Serial.println("Could not find fingerprint features");
+      Sprintln("Could not find fingerprint features");
       return p;
     case FINGERPRINT_INVALIDIMAGE:
-      Serial.println("Could not find fingerprint features");
+      Sprintln("Could not find fingerprint features");
       return p;
     default:
-      Serial.println("Unknown error");
+      Sprintln("Unknown error");
       return p;
   }
 
   // OK converted!
   p = finger.fingerSearch();
   if (p == FINGERPRINT_OK) {
-    Serial.println("Found a print match!");
+    Sprintln("Found a print match!");
   } else if (p == FINGERPRINT_PACKETRECIEVEERR) {
-    Serial.println("Communication error");
+    Sprintln("Communication error");
     return p;
   } else if (p == FINGERPRINT_NOTFOUND) {
-    Serial.println("Did not find a match");
+    Sprintln("Did not find a match");
     return p;
   } else {
-    Serial.println("Unknown error");
+    Sprintln("Unknown error");
     return p;
   }
 
   // found a match!
-  Serial.print("Found ID #"); Serial.print(finger.fingerID);
-  Serial.print(" with confidence of "); Serial.println(finger.confidence);
+  Sprint("Found ID #"); Sprint(finger.fingerID);
+  Sprint(" with confidence of "); Sprintln(finger.confidence);
   delay(1000);
   finger_trig = true;
   return finger.fingerID;
@@ -459,8 +529,7 @@ int getFingerprintIDez() {
   if (p != FINGERPRINT_OK)  return -1;
 
   // found a match!
-  Serial.print("Found ID #"); Serial.print(finger.fingerID);
-  Serial.print(" with confidence of "); Serial.println(finger.confidence);
+  Sprint("Found ID #"); Sprint(finger.fingerID);
+  Sprint(" with confidence of "); Sprintln(finger.confidence);
   return finger.fingerID;
 }
-
