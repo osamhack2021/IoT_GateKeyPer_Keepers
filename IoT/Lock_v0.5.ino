@@ -5,14 +5,12 @@
 #define LED_G 10  //PWM 255 ~ 100
 #define LED_R 9   //PWM 255 ~ 100
 
-
 #define ReadDataBytes 20;
-int Lock_ID = 10;
+int Lock_ID = 8;
 int State_Trig = 0;
 int Created_Date = 10920;
 int Created_User = 01320;
 int Locker_Trig = 0;
-
 
 void setup()
 {
@@ -29,8 +27,7 @@ void setup()
   Wire.begin(Lock_ID);
   Wire.onReceive(receiveData);
   Wire.onRequest(requestEvent);
-  Serial.begin(9600);
-  
+  Serial.begin(57600);
 }
 
 void loop()
@@ -59,9 +56,9 @@ void receiveData(int bytes)
     char ch = Wire.read();
     if (ch != '\n')
     {
-      Serial.print(ch);
       inChar[i] = ch;
       i++;
+      Serial.println(ch);
     }
     else
     {
@@ -69,17 +66,20 @@ void receiveData(int bytes)
     }
   }
   String inPacket = inChar;
-
-  if (inPacket.equals("Lock_ID"))
+  Serial.println(inPacket);
+  if (inPacket.equals("q1"))
   {
+    Serial.println("State1");
     State_Trig = 1;
   }
   else if (inPacket.equals("Test"))
   {
+    Serial.println("State3");
     State_Trig = 3;
   }
-  else if (inPacket.equals("Open"))
+  else if (inPacket.equals("q2"))
   {
+    Serial.println("State4");
     State_Trig = 4;
   }
   else
@@ -90,7 +90,6 @@ void receiveData(int bytes)
 void requestEvent()
 {
   if(State_Trig == 1){
-
     Serial.println("Debug Point 5");
     Wire.write("ID : ");
     Wire.write(String(Lock_ID).c_str());
@@ -148,54 +147,3 @@ void LED_Write(char data){
   }
   return;
 }
-
-
-
-
-
-static void SetPwmFrequency(int pin, int divisor)
-{
-  byte mode;
-  if (pin == 5 || pin == 6 || pin == 9 || pin == 10) {
-    switch (divisor) {
-    case 1: mode = 0x01; break;
-    case 8: mode = 0x02; break;       //<--  
-    case 64: mode = 0x03; break;    
-    case 256: mode = 0x04; break;
-    case 1024: mode = 0x05; break;
-    default: return;
-    }
-    if (pin == 5 || pin == 6) {
-      TCCR0B = TCCR0B & 0b11111000 | mode;
-    }
-    else {
-      TCCR1B = TCCR1B & 0b11111000 | mode;
-    }
-  }
-  else if (pin == 3 || pin == 11) {
-    switch (divisor) {
-    case 1: mode = 0x01; break;
-    case 8: mode = 0x02; break;
-    case 32: mode = 0x03; break;
-    case 64: mode = 0x04; break;
-    case 128: mode = 0x05; break;
-    case 256: mode = 0x06; break;
-    case 1024: mode = 0x07; break;
-    default: return;
-    }
-    TCCR2B = TCCR2B & 0b11111000 | mode;
-  }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
