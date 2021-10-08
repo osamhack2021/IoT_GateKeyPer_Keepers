@@ -4,7 +4,6 @@
 #define LED_B 11  //PWM 255 ~ 100
 #define LED_G 10  //PWM 255 ~ 100
 #define LED_R 9   //PWM 255 ~ 100
-#define LOCKER 5
 
 
 #define ReadDataBytes 20;
@@ -12,16 +11,19 @@ int Lock_ID = 10;
 int State_Trig = 0;
 int Created_Date = 10920;
 int Created_User = 01320;
+int Locker_Trig = 0;
+
+
 void setup()
 {
   pinMode(LED_R, OUTPUT);
   pinMode(LED_G, OUTPUT);
   pinMode(LED_B, OUTPUT);
-  pinMode(LOCKER, OUTPUT);
+  pinMode(5, OUTPUT);
   pinMode(6, OUTPUT);
   
   LED_Write('C');
-  digitalWrite(LOCKER,LOW);
+  digitalWrite(5, LOW);
   digitalWrite(6, LOW);
   delay(200);
   Wire.begin(Lock_ID);
@@ -29,12 +31,22 @@ void setup()
   Wire.onRequest(requestEvent);
   Serial.begin(9600);
   
-  
 }
 
 void loop()
 {
-  
+  delay(50);
+  if(Locker_Trig == 1){
+    delay(200);
+    digitalWrite(5, HIGH);
+    digitalWrite(6, LOW);
+    Serial.println("Done!");
+    delay(700);
+    digitalWrite(5, LOW);
+    digitalWrite(6, LOW);
+    delay(300);
+    Locker_Trig = 0;
+  }
 }
 
 
@@ -77,9 +89,8 @@ void receiveData(int bytes)
 
 void requestEvent()
 {
-  switch (State_Trig)
-  {
-  case 1:
+  if(State_Trig == 1){
+
     Serial.println("Debug Point 5");
     Wire.write("ID : ");
     Wire.write(String(Lock_ID).c_str());
@@ -90,34 +101,25 @@ void requestEvent()
     Wire.write('\n');
     State_Trig = 0;
     delay(100);
-      LED_Write('R');
-
-    break;
-  case 2:
+    LED_Write('R');
+  }else if(State_Trig == 2){
     Serial.println("Debug Point 6");
     Wire.write("Data 2 Receive\n");
     State_Trig = 0;
-    break;
-  case 3:
+  }else if(State_Trig == 3){
     Serial.println("Debug Point 7");
     Wire.write("Now Testing!\n");
     State_Trig = 0;
-    break;
-  case 4:
+  }else if(State_Trig == 4){
     Serial.println("Debug Point 9");
     Wire.write("Open Door-lock\n");
     State_Trig = 0;
     LED_Write('G');
-    digitalWrite(LOCKER,HIGH);
-    delay(700);
-    digitalWrite(LOCKER,LOW);
-    delay(1000);
+    Locker_Trig = 1;
 
-    break;
-  default:
+  }else{
     Serial.println("Debug Point 8");
     Wire.write("Data Come in\n");
-    break;
   }
 }
 
@@ -146,3 +148,54 @@ void LED_Write(char data){
   }
   return;
 }
+
+
+
+
+
+static void SetPwmFrequency(int pin, int divisor)
+{
+  byte mode;
+  if (pin == 5 || pin == 6 || pin == 9 || pin == 10) {
+    switch (divisor) {
+    case 1: mode = 0x01; break;
+    case 8: mode = 0x02; break;       //<--  
+    case 64: mode = 0x03; break;    
+    case 256: mode = 0x04; break;
+    case 1024: mode = 0x05; break;
+    default: return;
+    }
+    if (pin == 5 || pin == 6) {
+      TCCR0B = TCCR0B & 0b11111000 | mode;
+    }
+    else {
+      TCCR1B = TCCR1B & 0b11111000 | mode;
+    }
+  }
+  else if (pin == 3 || pin == 11) {
+    switch (divisor) {
+    case 1: mode = 0x01; break;
+    case 8: mode = 0x02; break;
+    case 32: mode = 0x03; break;
+    case 64: mode = 0x04; break;
+    case 128: mode = 0x05; break;
+    case 256: mode = 0x06; break;
+    case 1024: mode = 0x07; break;
+    default: return;
+    }
+    TCCR2B = TCCR2B & 0b11111000 | mode;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
