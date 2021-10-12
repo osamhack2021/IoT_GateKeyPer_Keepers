@@ -223,14 +223,14 @@ void loop(){
         step_trig = 8; 
         Serial.println("[DBG032] Date Over"); 
       }
-    }else if(User_ID==18 && Lock_ID==8){  //권한 있어야 갈수있는 키
+    }else if((User_ID>=20 && User_ID<=30) && Lock_ID==8){  //권한 있어야 갈수있는 키
       if(Today_Date-Create_Date<2){ 
         step_trig = 4;
       }else{
         step_trig = 8; 
         Serial.println("[DBG032] Date Over"); 
       }
-    }else if((User_ID==17||User_ID==18||User_ID==19) && Lock_ID ==9){  //권한 없어도 접근가능 키
+    }else if(Lock_ID ==9){  //권한 없어도 접근가능 키
       Serial.println("[DBG031] For all user");
       step_trig = 4;
     }else{
@@ -433,7 +433,9 @@ uint8_t getFingerprintID() {
     return p;
   } else if (p == FINGERPRINT_NOTFOUND) {
     Sprintln("Did not find a match");
-    return p;
+    finger_trig = true;
+    delay(500);
+    return 1;
   } else {
     Sprintln("Unknown error");
     return p;
@@ -442,7 +444,7 @@ uint8_t getFingerprintID() {
   // found a match!
   Sprintln("Found ID #"); Sprintln(finger.fingerID);
   Sprintln(" with confidence of "); Sprintln(finger.confidence);
-  delay(1000);
+  delay(500);
   finger_trig = true;
   return finger.fingerID;
 }
