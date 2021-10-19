@@ -38,7 +38,8 @@
 
 ## License
 
-Distributed under the MIT License. See `LICENSE` for more information.
+- IoT : BSD 3-Clause license
+- WEB : MIT license
 
 <!-- CONTACT -->
 
