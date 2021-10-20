@@ -86,7 +86,6 @@ class CompoMainStatus extends StatelessWidget {
           Pin(size: 40.0, start: 14.0),
           child: Stack(
             children: [
-// background:
               Positioned.fill(
                 child: Container(
                   decoration: BoxDecoration(
@@ -141,7 +140,6 @@ class CompoMainStatus extends StatelessWidget {
           Pin(size: 40.0, start: 14.0),
           child: Stack(
             children: [
-// background:
               Positioned.fill(
                 child: Container(
                   decoration: BoxDecoration(

@@ -20,9 +20,7 @@ class LayoutKeyDetail extends StatelessWidget {
           Pinned.fromPins(
             Pin(size: 100.0, start: 331.0),
             Pin(size: 31.1, start: 93.9),
-            child:
-                // Adobe XD layer: '뒤로가기' (group)
-                PageLink(
+            child: PageLink(
               links: [
                 PageLinkInfo(
                   transition: LinkTransition.Fade,
@@ -36,9 +34,7 @@ class LayoutKeyDetail extends StatelessWidget {
                   Pinned.fromPins(
                     Pin(size: 31.1, start: 0.0),
                     Pin(start: 0.0, end: 0.0),
-                    child:
-                        // Adobe XD layer: 'Icon_뒤로가기' (group)
-                        Stack(
+                    child: Stack(
                       children: <Widget>[
                         Pinned.fromPins(
                           Pin(size: 20.0, start: 4.0),
@@ -52,9 +48,7 @@ class LayoutKeyDetail extends StatelessWidget {
                         Pinned.fromPins(
                           Pin(start: 0.0, end: 0.0),
                           Pin(start: 0.0, end: 0.0),
-                          child:
-                              // Adobe XD layer: '가이드 박스' (group)
-                              Stack(
+                          child: Stack(
                             children: <Widget>[
                               Pinned.fromPins(
                                 Pin(start: 0.0, end: 0.0),
@@ -185,7 +179,6 @@ class LayoutKeyDetail extends StatelessWidget {
                           Pin(start: 0.0, end: 0.0),
                           child: Stack(
                             children: [
-// background:
                               Positioned.fill(
                                 child: Container(
                                   decoration: BoxDecoration(
@@ -463,7 +456,6 @@ class LayoutKeyDetail extends StatelessWidget {
                           Pin(start: 0.0, end: 0.0),
                           child: Stack(
                             children: [
-// background:
                               Positioned.fill(
                                 child: Container(
                                   decoration: BoxDecoration(
@@ -510,9 +502,7 @@ class LayoutKeyDetail extends StatelessWidget {
                                               child: Pinned.fromPins(
                                                 Pin(size: 18.0, middle: 1.0),
                                                 Pin(start: 1.0, end: 1.0),
-                                                child:
-                                                    // Adobe XD layer: 'Icon_down arrow' (group)
-                                                    Stack(
+                                                child: Stack(
                                                   children: <Widget>[
                                                     Pinned.fromPins(
                                                       Pin(start: 3.0, end: 2.1),
@@ -529,9 +519,7 @@ class LayoutKeyDetail extends StatelessWidget {
                                                     Pinned.fromPins(
                                                       Pin(start: 0.0, end: 0.0),
                                                       Pin(start: 0.0, end: 0.0),
-                                                      child:
-                                                          // Adobe XD layer: '가이드 박스' (group)
-                                                          Stack(
+                                                      child: Stack(
                                                         children: <Widget>[
                                                           Pinned.fromPins(
                                                             Pin(
@@ -1167,9 +1155,7 @@ class LayoutKeyDetail extends StatelessWidget {
           Pinned.fromPins(
             Pin(size: 290.0, start: 0.0),
             Pin(start: 67.0, end: 0.0),
-            child:
-                // Adobe XD layer: 'Compo_Key_Group' (group)
-                Stack(
+            child: Stack(
               children: <Widget>[
                 Pinned.fromPins(
                   Pin(start: 0.0, end: 0.0),
@@ -1330,9 +1316,7 @@ class LayoutKeyDetail extends StatelessWidget {
                             Pinned.fromPins(
                               Pin(start: 0.0, end: 0.0),
                               Pin(start: 0.0, end: 0.0),
-                              child:
-                                  // Adobe XD layer: '가이드 박스' (group)
-                                  Stack(
+                              child: Stack(
                                 children: <Widget>[
                                   Pinned.fromPins(
                                     Pin(start: 0.0, end: 0.0),
@@ -1470,9 +1454,7 @@ class LayoutKeyDetail extends StatelessWidget {
                             Pinned.fromPins(
                               Pin(start: 0.0, end: 0.0),
                               Pin(start: 0.0, end: 0.0),
-                              child:
-                                  // Adobe XD layer: '가이드 박스' (group)
-                                  Stack(
+                              child: Stack(
                                 children: <Widget>[
                                   Pinned.fromPins(
                                     Pin(start: 0.0, end: 0.0),
@@ -1610,9 +1592,7 @@ class LayoutKeyDetail extends StatelessWidget {
                             Pinned.fromPins(
                               Pin(start: 0.0, end: 0.0),
                               Pin(start: 0.0, end: 0.0),
-                              child:
-                                  // Adobe XD layer: '가이드 박스' (group)
-                                  Stack(
+                              child: Stack(
                                 children: <Widget>[
                                   Pinned.fromPins(
                                     Pin(start: 0.0, end: 0.0),
@@ -1750,9 +1730,7 @@ class LayoutKeyDetail extends StatelessWidget {
                             Pinned.fromPins(
                               Pin(start: 0.0, end: 0.0),
                               Pin(start: 0.0, end: 0.0),
-                              child:
-                                  // Adobe XD layer: '가이드 박스' (group)
-                                  Stack(
+                              child: Stack(
                                 children: <Widget>[
                                   Pinned.fromPins(
                                     Pin(start: 0.0, end: 0.0),
@@ -1890,9 +1868,7 @@ class LayoutKeyDetail extends StatelessWidget {
                             Pinned.fromPins(
                               Pin(start: 0.0, end: 0.0),
                               Pin(start: 0.0, end: 0.0),
-                              child:
-                                  // Adobe XD layer: '가이드 박스' (group)
-                                  Stack(
+                              child: Stack(
                                 children: <Widget>[
                                   Pinned.fromPins(
                                     Pin(start: 0.0, end: 0.0),
@@ -2030,9 +2006,7 @@ class LayoutKeyDetail extends StatelessWidget {
                             Pinned.fromPins(
                               Pin(start: 0.0, end: 0.0),
                               Pin(start: 0.0, end: 0.0),
-                              child:
-                                  // Adobe XD layer: '가이드 박스' (group)
-                                  Stack(
+                              child: Stack(
                                 children: <Widget>[
                                   Pinned.fromPins(
                                     Pin(start: 0.0, end: 0.0),
@@ -2170,9 +2144,7 @@ class LayoutKeyDetail extends StatelessWidget {
                             Pinned.fromPins(
                               Pin(start: 0.0, end: 0.0),
                               Pin(start: 0.0, end: 0.0),
-                              child:
-                                  // Adobe XD layer: '가이드 박스' (group)
-                                  Stack(
+                              child: Stack(
                                 children: <Widget>[
                                   Pinned.fromPins(
                                     Pin(start: 0.0, end: 0.0),
@@ -2310,9 +2282,7 @@ class LayoutKeyDetail extends StatelessWidget {
                             Pinned.fromPins(
                               Pin(start: 0.0, end: 0.0),
                               Pin(start: 0.0, end: 0.0),
-                              child:
-                                  // Adobe XD layer: '가이드 박스' (group)
-                                  Stack(
+                              child: Stack(
                                 children: <Widget>[
                                   Pinned.fromPins(
                                     Pin(start: 0.0, end: 0.0),
@@ -2450,9 +2420,7 @@ class LayoutKeyDetail extends StatelessWidget {
                             Pinned.fromPins(
                               Pin(start: 0.0, end: 0.0),
                               Pin(start: 0.0, end: 0.0),
-                              child:
-                                  // Adobe XD layer: '가이드 박스' (group)
-                                  Stack(
+                              child: Stack(
                                 children: <Widget>[
                                   Pinned.fromPins(
                                     Pin(start: 0.0, end: 0.0),
@@ -2478,9 +2446,7 @@ class LayoutKeyDetail extends StatelessWidget {
                       Pinned.fromPins(
                         Pin(start: 0.0, end: 0.0),
                         Pin(start: 0.0, end: 0.0),
-                        child:
-                            // Adobe XD layer: '가이드 박스' (group)
-                            Stack(
+                        child: Stack(
                           children: <Widget>[
                             Pinned.fromPins(
                               Pin(start: 0.0, end: 0.0),
@@ -2512,9 +2478,7 @@ class LayoutKeyDetail extends StatelessWidget {
           Pinned.fromPins(
             Pin(start: 0.0, end: 0.0),
             Pin(size: 67.0, start: 0.0),
-            child:
-                // Adobe XD layer: 'Compo_Main_Status' (group)
-                Stack(
+            child: Stack(
               children: <Widget>[
                 Pinned.fromPins(
                   Pin(start: 0.0, end: 0.0),
@@ -2607,7 +2571,6 @@ class LayoutKeyDetail extends StatelessWidget {
                   Pin(size: 40.0, start: 14.0),
                   child: Stack(
                     children: [
-// background:
                       Positioned.fill(
                         child: Container(
                           decoration: BoxDecoration(
@@ -2671,7 +2634,6 @@ class LayoutKeyDetail extends StatelessWidget {
                     ],
                     child: Stack(
                       children: [
-// background:
                         Positioned.fill(
                           child: Container(
                             decoration: BoxDecoration(

@@ -22,7 +22,7 @@ class LayoutLockManageGroup extends StatelessWidget {
             Pin(size: 290.0, start: 0.0),
             Pin(start: 67.0, end: 0.0),
             child:
-                // Adobe XD layer: 'Compo_Lock_Group_Ed…' (group)
+                
                 Stack(
               children: <Widget>[
                 Pinned.fromPins(
@@ -43,7 +43,7 @@ class LayoutLockManageGroup extends StatelessWidget {
                         Pin(start: 0.0, end: 0.0),
                         Pin(start: 0.0, end: 0.0),
                         child:
-                            // Adobe XD layer: '가이드 박스' (group)
+                            
                             Stack(
                           children: <Widget>[
                             Pinned.fromPins(
@@ -221,7 +221,7 @@ class LayoutLockManageGroup extends StatelessWidget {
                               Pin(start: 0.0, end: 0.0),
                               Pin(start: 0.0, end: 0.0),
                               child:
-                                  // Adobe XD layer: '가이드 박스' (group)
+                                  
                                   Stack(
                                 children: <Widget>[
                                   Pinned.fromPins(
@@ -361,7 +361,7 @@ class LayoutLockManageGroup extends StatelessWidget {
                               Pin(start: 0.0, end: 0.0),
                               Pin(start: 0.0, end: 0.0),
                               child:
-                                  // Adobe XD layer: '가이드 박스' (group)
+                                  
                                   Stack(
                                 children: <Widget>[
                                   Pinned.fromPins(
@@ -514,7 +514,7 @@ class LayoutLockManageGroup extends StatelessWidget {
                               Pin(start: 0.0, end: 0.0),
                               Pin(start: 0.0, end: 0.0),
                               child:
-                                  // Adobe XD layer: '가이드 박스' (group)
+                                  
                                   Stack(
                                 children: <Widget>[
                                   Pinned.fromPins(
@@ -667,7 +667,7 @@ class LayoutLockManageGroup extends StatelessWidget {
                               Pin(start: 0.0, end: 0.0),
                               Pin(start: 0.0, end: 0.0),
                               child:
-                                  // Adobe XD layer: '가이드 박스' (group)
+                                  
                                   Stack(
                                 children: <Widget>[
                                   Pinned.fromPins(
@@ -820,7 +820,7 @@ class LayoutLockManageGroup extends StatelessWidget {
                               Pin(start: 0.0, end: 0.0),
                               Pin(start: 0.0, end: 0.0),
                               child:
-                                  // Adobe XD layer: '가이드 박스' (group)
+                                  
                                   Stack(
                                 children: <Widget>[
                                   Pinned.fromPins(
@@ -973,7 +973,7 @@ class LayoutLockManageGroup extends StatelessWidget {
                               Pin(start: 0.0, end: 0.0),
                               Pin(start: 0.0, end: 0.0),
                               child:
-                                  // Adobe XD layer: '가이드 박스' (group)
+                                  
                                   Stack(
                                 children: <Widget>[
                                   Pinned.fromPins(
@@ -1126,7 +1126,7 @@ class LayoutLockManageGroup extends StatelessWidget {
                               Pin(start: 0.0, end: 0.0),
                               Pin(start: 0.0, end: 0.0),
                               child:
-                                  // Adobe XD layer: '가이드 박스' (group)
+                                  
                                   Stack(
                                 children: <Widget>[
                                   Pinned.fromPins(
@@ -1279,7 +1279,7 @@ class LayoutLockManageGroup extends StatelessWidget {
                               Pin(start: 0.0, end: 0.0),
                               Pin(start: 0.0, end: 0.0),
                               child:
-                                  // Adobe XD layer: '가이드 박스' (group)
+                                  
                                   Stack(
                                 children: <Widget>[
                                   Pinned.fromPins(
@@ -1432,7 +1432,7 @@ class LayoutLockManageGroup extends StatelessWidget {
                               Pin(start: 0.0, end: 0.0),
                               Pin(start: 0.0, end: 0.0),
                               child:
-                                  // Adobe XD layer: '가이드 박스' (group)
+                                  
                                   Stack(
                                 children: <Widget>[
                                   Pinned.fromPins(
@@ -1576,7 +1576,7 @@ class LayoutLockManageGroup extends StatelessWidget {
             Pin(size: 432.0, middle: 0.5974),
             Pin(size: 36.0, end: 20.0),
             child:
-                // Adobe XD layer: 'Compo_Page_Number' (group)
+                
                 Stack(
               children: <Widget>[
                 Pinned.fromPins(
@@ -1625,7 +1625,7 @@ class LayoutLockManageGroup extends StatelessWidget {
                         Pin(start: 0.0, end: 0.0),
                         Pin(start: 0.0, end: 0.0),
                         child:
-                            // Adobe XD layer: '가이드 박스' (group)
+                            
                             Stack(
                           children: <Widget>[
                             Pinned.fromPins(
@@ -2038,7 +2038,7 @@ class LayoutLockManageGroup extends StatelessWidget {
             Pin(start: 290.0, end: 0.0),
             Pin(size: 502.0, start: 177.0),
             child:
-                // Adobe XD layer: 'Compo_Lock_List' (group)
+                
                 Stack(
               children: <Widget>[
                 Pinned.fromPins(
@@ -3525,7 +3525,7 @@ class LayoutLockManageGroup extends StatelessWidget {
             Pin(start: 330.0, end: 40.0),
             Pin(size: 49.0, start: 88.0),
             child:
-                // Adobe XD layer: 'Compo_Search_Bar' (group)
+                
                 Stack(
               children: <Widget>[
                 Pinned.fromPins(
@@ -3601,7 +3601,7 @@ class LayoutLockManageGroup extends StatelessWidget {
                   Pin(size: 38.0, start: 6.0),
                   child: Stack(
                     children: [
-// background:
+
                       Positioned.fill(
                         child: Container(
                           decoration: BoxDecoration(
@@ -3641,7 +3641,7 @@ class LayoutLockManageGroup extends StatelessWidget {
                   Pin(size: 37.0, start: 6.0),
                   child: Stack(
                     children: [
-// background:
+
                       Positioned.fill(
                         child: Container(
                           decoration: BoxDecoration(
@@ -3683,7 +3683,7 @@ class LayoutLockManageGroup extends StatelessWidget {
             Pin(start: 0.0, end: 0.0),
             Pin(size: 67.0, start: 0.0),
             child:
-                // Adobe XD layer: 'Compo_Main_Status' (group)
+                
                 Stack(
               children: <Widget>[
                 Pinned.fromPins(
@@ -3777,7 +3777,7 @@ class LayoutLockManageGroup extends StatelessWidget {
                   Pin(size: 40.0, start: 14.0),
                   child: Stack(
                     children: [
-// background:
+
                       Positioned.fill(
                         child: Container(
                           decoration: BoxDecoration(
@@ -3841,7 +3841,7 @@ class LayoutLockManageGroup extends StatelessWidget {
                     ],
                     child: Stack(
                       children: [
-// background:
+
                         Positioned.fill(
                           child: Container(
                             decoration: BoxDecoration(
@@ -3885,14 +3885,14 @@ class LayoutLockManageGroup extends StatelessWidget {
             Pin(start: 0.0, end: 0.0),
             Pin(start: 0.0, end: 0.0),
             child:
-                // Adobe XD layer: 'Compo_Popup_Type_3' (group)
+                
                 Stack(
               children: <Widget>[
                 Pinned.fromPins(
                   Pin(start: 0.0, end: 0.0),
                   Pin(start: 0.0, end: 0.0),
                   child:
-                      // Adobe XD layer: '그림자' (shape)
+                      
                       Container(
                     decoration: BoxDecoration(
                       color: const Color(0xb3000000),
@@ -3903,14 +3903,14 @@ class LayoutLockManageGroup extends StatelessWidget {
                   Pin(size: 440.0, middle: 0.5),
                   Pin(size: 584.0, middle: 0.5),
                   child:
-                      // Adobe XD layer: '팝업' (group)
+                      
                       Stack(
                     children: <Widget>[
                       Pinned.fromPins(
                         Pin(start: 0.0, end: 6.0),
                         Pin(start: 0.0, end: 0.0),
                         child:
-                            // Adobe XD layer: 'Container' (shape)
+                            
                             Container(
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(2.0),
@@ -3954,7 +3954,7 @@ class LayoutLockManageGroup extends StatelessWidget {
                               Pin(size: 56.0, end: 0.0),
                               Pin(size: 56.0, end: 0.0),
                               child:
-                                  // Adobe XD layer: 'Icon_취소' (group)
+                                  
                                   Stack(
                                 children: <Widget>[
                                   Pinned.fromPins(
@@ -3981,7 +3981,7 @@ class LayoutLockManageGroup extends StatelessWidget {
                                     Pin(start: 0.0, end: 0.0),
                                     Pin(start: 0.0, end: 0.0),
                                     child:
-                                        // Adobe XD layer: '가이드 박스' (group)
+                                        
                                         Stack(
                                       children: <Widget>[
                                         Pinned.fromPins(
@@ -4010,7 +4010,7 @@ class LayoutLockManageGroup extends StatelessWidget {
                               Pin(start: 0.0, end: 0.0),
                               child: Stack(
                                 children: [
-// background:
+
                                   Positioned.fill(
                                     child: Container(
                                       decoration: BoxDecoration(
@@ -4237,7 +4237,7 @@ class LayoutLockManageGroup extends StatelessWidget {
                               Pin(start: 0.0, end: 0.0),
                               Pin(size: 1.0, start: 44.0),
                               child:
-                                  // Adobe XD layer: 'Line' (shape)
+                                  
                                   Container(
                                 decoration: BoxDecoration(
                                   color: const Color(0xffffffff),
@@ -4731,7 +4731,7 @@ class LayoutLockManageGroup extends StatelessWidget {
                           ],
                           child: Stack(
                             children: [
-// background:
+
                               Positioned.fill(
                                 child: Container(
                                   decoration: BoxDecoration(
@@ -4776,7 +4776,7 @@ class LayoutLockManageGroup extends StatelessWidget {
                         Pin(size: 36.0, middle: 0.2482),
                         child: Stack(
                           children: [
-// background:
+
                             Positioned.fill(
                               child: Container(
                                 decoration: BoxDecoration(

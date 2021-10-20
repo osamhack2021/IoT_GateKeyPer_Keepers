@@ -319,9 +319,7 @@ class CompoStatus extends StatelessWidget {
                           Pinned.fromPins(
                             Pin(size: 56.0, end: 0.0),
                             Pin(start: 0.0, end: 0.0),
-                            child:
-                                // Adobe XD layer: 'Icon_down arrow' (group)
-                                Stack(
+                            child: Stack(
                               children: <Widget>[
                                 Pinned.fromPins(
                                   Pin(size: 12.9, start: 2.6),
@@ -335,9 +333,7 @@ class CompoStatus extends StatelessWidget {
                                 Pinned.fromPins(
                                   Pin(start: 0.0, end: 0.0),
                                   Pin(start: 0.0, end: 0.0),
-                                  child:
-                                      // Adobe XD layer: '가이드 박스' (group)
-                                      Stack(
+                                  child: Stack(
                                     children: <Widget>[
                                       Pinned.fromPins(
                                         Pin(start: 0.0, end: 0.0),

@@ -11,7 +11,6 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -33,11 +32,8 @@ class Main extends StatelessWidget {
           Pinned.fromPins(
             Pin(start: 0.0, end: 0.0),
             Pin(size: 67.0, start: 0.0),
-            child:
-                // Adobe XD layer: 'Compo_Login_Status' (group)
-                Stack(
+            child: Stack(
               children: <Widget>[
-                // Adobe XD layer: 'blueStatus ' (shape)
                 Container(
                   width: 1920.0,
                   height: 67.0,
@@ -66,9 +62,7 @@ class Main extends StatelessWidget {
           Pinned.fromPins(
             Pin(size: 430.0, middle: 0.5),
             Pin(size: 276.0, middle: 0.5),
-            child:
-                // Adobe XD layer: 'Compo_Login_Main_Box' (group)
-                Stack(
+            child: Stack(
               children: <Widget>[
                 Pinned.fromPins(
                   Pin(start: 0.0, end: 0.0),

@@ -13,9 +13,7 @@ class CompoPopup extends StatelessWidget {
         Pinned.fromPins(
           Pin(start: 0.0, end: 0.0),
           Pin(start: 0.0, end: 0.0),
-          child:
-              // Adobe XD layer: '그림자' (shape)
-              Container(
+          child: Container(
             decoration: BoxDecoration(
               color: const Color(0xb3000000),
             ),
@@ -24,16 +22,12 @@ class CompoPopup extends StatelessWidget {
         Pinned.fromPins(
           Pin(size: 434.0, middle: 0.5),
           Pin(size: 508.0, middle: 0.5),
-          child:
-              // Adobe XD layer: '팝업' (group)
-              Stack(
+          child: Stack(
             children: <Widget>[
               Pinned.fromPins(
                 Pin(start: 0.0, end: 0.0),
                 Pin(start: 0.0, end: 0.0),
-                child:
-                    // Adobe XD layer: 'Container' (shape)
-                    Container(
+                child: Container(
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(4.0),
                     color: const Color(0xffffffff),
@@ -75,9 +69,7 @@ class CompoPopup extends StatelessWidget {
                     Pinned.fromPins(
                       Pin(size: 30.0, end: 19.0),
                       Pin(size: 30.0, middle: 0.5),
-                      child:
-                          // Adobe XD layer: 'Icon_취소' (group)
-                          Stack(
+                      child: Stack(
                         children: <Widget>[
                           Pinned.fromPins(
                             Pin(size: 19.9, start: 4.2),
@@ -91,9 +83,7 @@ class CompoPopup extends StatelessWidget {
                           Pinned.fromPins(
                             Pin(start: 0.0, end: 0.0),
                             Pin(start: 0.0, end: 0.0),
-                            child:
-                                // Adobe XD layer: '가이드 박스' (group)
-                                Stack(
+                            child: Stack(
                               children: <Widget>[
                                 Pinned.fromPins(
                                   Pin(start: 0.0, end: 0.0),
@@ -144,7 +134,6 @@ class CompoPopup extends StatelessWidget {
                         Pin(start: 0.0, end: 0.0),
                         child: Stack(
                           children: [
-// background:
                             Positioned.fill(
                               child: Container(
                                 decoration: BoxDecoration(
@@ -219,7 +208,6 @@ class CompoPopup extends StatelessWidget {
                         Pin(start: 0.0, end: 0.0),
                         child: Stack(
                           children: [
-// background:
                             Positioned.fill(
                               child: Container(
                                 decoration: BoxDecoration(
@@ -294,7 +282,6 @@ class CompoPopup extends StatelessWidget {
                         Pin(start: 0.0, end: 0.0),
                         child: Stack(
                           children: [
-// background:
                             Positioned.fill(
                               child: Container(
                                 decoration: BoxDecoration(
@@ -369,7 +356,6 @@ class CompoPopup extends StatelessWidget {
                         Pin(start: 0.0, end: 0.0),
                         child: Stack(
                           children: [
-// background:
                             Positioned.fill(
                               child: Container(
                                 decoration: BoxDecoration(
@@ -444,7 +430,6 @@ class CompoPopup extends StatelessWidget {
                         Pin(start: 0.0, end: 0.0),
                         child: Stack(
                           children: [
-// background:
                             Positioned.fill(
                               child: Container(
                                 decoration: BoxDecoration(
@@ -519,7 +504,6 @@ class CompoPopup extends StatelessWidget {
                         Pin(start: 0.0, end: 0.0),
                         child: Stack(
                           children: [
-// background:
                             Positioned.fill(
                               child: Container(
                                 decoration: BoxDecoration(
@@ -564,9 +548,7 @@ class CompoPopup extends StatelessWidget {
                                             child: Pinned.fromPins(
                                               Pin(size: 18.0, middle: 1.0),
                                               Pin(start: 2.0, end: 1.0),
-                                              child:
-                                                  // Adobe XD layer: 'Icon_down arrow' (group)
-                                                  Stack(
+                                              child: Stack(
                                                 children: <Widget>[
                                                   Pinned.fromPins(
                                                     Pin(size: 12.9, start: 1.9),
@@ -583,9 +565,7 @@ class CompoPopup extends StatelessWidget {
                                                   Pinned.fromPins(
                                                     Pin(start: 0.0, end: 0.0),
                                                     Pin(start: 0.0, end: 0.0),
-                                                    child:
-                                                        // Adobe XD layer: '가이드 박스' (group)
-                                                        Stack(
+                                                    child: Stack(
                                                       children: <Widget>[
                                                         Pinned.fromPins(
                                                           Pin(
