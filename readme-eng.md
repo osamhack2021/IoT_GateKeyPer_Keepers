@@ -2,7 +2,7 @@
 <p align="center">
    <br />
    <h1 align="center">2021 Military Public Software Online Hackathon</h1><p align = "center">
-<a href="https://github.com/osamhack2021/IoT_GateKeyPer_Keeper/blob/master/LICENSE"><img alt="arduino license" src="https://img.shields.io/badge/license-BSD--3--Clause-green?style=for-the-badge&logo=Arduino"></a><a>    </a><a href="https://github.com/osamhack2021/IoT_GateKeyPer_Keeper/blob/master/LICENSE"><img alt="WEB license" src="https://img.shields.io/badge/license-MIT-green?style=for-the-badge&logo=HTML5"></a><a>    </a><a href="https://github.com/osamhack2021/IoT_GateKeyPer_Keeper/issues"><img alt="GitHub issues" src="https://img.shields.io/github/issues/osamhack2021/IoT_GateKeyPer_Keeper?style=for-the-badge"></a><a>    </a><a href="https://github.com/osamhack2021/IoT_GateKeyPer_Keeper/network"><img alt="GitHub forks" src="https://img.shields.io/github/forks/osamhack2021/IoT_GateKeyPer_Keeper?style=for-the-badge"></a><a>    </a><a href="https://github.com/osamhack2021/IoT_GateKeyPer_Keeper/stargazers"><img alt="GitHub stars" src="https://img.shields.io/github/stars/osamhack2021/IoT_GateKeyPer_Keeper?style=for-the-badge"></a><a>    </a><a><img alt="Version" src="https://img.shields.io/badge/ver-v1.0.0-orange?style=for-the-badge"></a></p>
+<a href="https://github.com/osamhack2021/IoT_GateKeyPer_Keeper/blob/master/LICENSE"><img alt="arduino license" src="https://img.shields.io/badge/license-BSD--3--Clause%7CGPL--v3-green?style=for-the-badge&logo=Arduino"></a><a>    </a><a href="https://github.com/osamhack2021/IoT_GateKeyPer_Keeper/blob/master/LICENSE"><img alt="WEB license" src="https://img.shields.io/badge/license-MIT-green?style=for-the-badge&logo=HTML5"></a><a>    </a><a href="https://github.com/osamhack2021/IoT_GateKeyPer_Keeper/issues"><img alt="GitHub issues" src="https://img.shields.io/github/issues/osamhack2021/IoT_GateKeyPer_Keeper?style=for-the-badge"></a><a>    </a><a href="https://github.com/osamhack2021/IoT_GateKeyPer_Keeper/network"><img alt="GitHub forks" src="https://img.shields.io/github/forks/osamhack2021/IoT_GateKeyPer_Keeper?style=for-the-badge"></a><a>    </a><a href="https://github.com/osamhack2021/IoT_GateKeyPer_Keeper/stargazers"><img alt="GitHub stars" src="https://img.shields.io/github/stars/osamhack2021/IoT_GateKeyPer_Keeper?style=for-the-badge"></a><a>    </a><a><img alt="Version" src="https://img.shields.io/badge/ver-v1.0.0-orange?style=for-the-badge"></a></p>
     <br /><p align="center">
  <img  src="https://user-images.githubusercontent.com/41943811/137887963-32aaa0e8-362a-4bf9-a831-e68cf831741f.jpg"/>
    
@@ -45,7 +45,7 @@ https://bit.ly/gatekeyper_prototype
 
 ## License
 
-- IoT : BSD 3-Clause license
+- IoT : BSD 3-Clause, GPL v3 license
 - WEB : MIT license
 
 <!-- CONTACT -->
