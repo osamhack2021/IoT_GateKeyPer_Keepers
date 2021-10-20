@@ -58,9 +58,7 @@ class LockDetail extends StatelessWidget {
                             Pinned.fromPins(
                               Pin(start: 0.0, end: 0.0),
                               Pin(start: 0.0, end: 0.0),
-                              child:
-                                  // Adobe XD layer: '가이드 박스' (group)
-                                  Stack(
+                              child: Stack(
                                 children: <Widget>[
                                   Pinned.fromPins(
                                     Pin(start: 0.0, end: 0.0),
@@ -1076,9 +1074,7 @@ class LockDetail extends StatelessWidget {
                 Pinned.fromPins(
                   Pin(size: 56.0, start: 20.0),
                   Pin(size: 56.0, middle: 0.5),
-                  child:
-                      // Adobe XD layer: 'Icon_뒤로가기' (group)
-                      PageLink(
+                  child: PageLink(
                     links: [
                       PageLinkInfo(
                         ease: Curves.easeInOut,
@@ -1100,9 +1096,7 @@ class LockDetail extends StatelessWidget {
                         Pinned.fromPins(
                           Pin(start: 0.0, end: 0.0),
                           Pin(start: 0.0, end: 0.0),
-                          child:
-                              // Adobe XD layer: '가이드 박스' (group)
-                              Stack(
+                          child: Stack(
                             children: <Widget>[
                               Pinned.fromPins(
                                 Pin(start: 0.0, end: 0.0),

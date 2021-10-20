@@ -13,7 +13,6 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -80,9 +79,7 @@ class Main extends StatelessWidget {
                                     Pinned.fromPins(
                                       Pin(start: 0.0, end: 0.0),
                                       Pin(start: 0.0, end: 0.0),
-                                      child:
-                                          // Adobe XD layer: '가이드 박스' (group)
-                                          Stack(
+                                      child: Stack(
                                         children: <Widget>[
                                           Pinned.fromPins(
                                             Pin(start: 0.0, end: 0.0),
@@ -480,9 +477,7 @@ class Main extends StatelessWidget {
                                     Pinned.fromPins(
                                       Pin(start: 0.0, end: 0.0),
                                       Pin(start: 0.0, end: 0.0),
-                                      child:
-                                          // Adobe XD layer: '가이드 박스' (group)
-                                          Stack(
+                                      child: Stack(
                                         children: <Widget>[
                                           Pinned.fromPins(
                                             Pin(start: 0.0, end: 0.0),
@@ -880,9 +875,7 @@ class Main extends StatelessWidget {
                                     Pinned.fromPins(
                                       Pin(start: 0.0, end: 0.0),
                                       Pin(start: 0.0, end: 0.0),
-                                      child:
-                                          // Adobe XD layer: '가이드 박스' (group)
-                                          Stack(
+                                      child: Stack(
                                         children: <Widget>[
                                           Pinned.fromPins(
                                             Pin(start: 0.0, end: 0.0),
@@ -1280,9 +1273,7 @@ class Main extends StatelessWidget {
                                     Pinned.fromPins(
                                       Pin(start: 0.0, end: 0.0),
                                       Pin(start: 0.0, end: 0.0),
-                                      child:
-                                          // Adobe XD layer: '가이드 박스' (group)
-                                          Stack(
+                                      child: Stack(
                                         children: <Widget>[
                                           Pinned.fromPins(
                                             Pin(start: 0.0, end: 0.0),
@@ -1677,7 +1668,6 @@ class Main extends StatelessWidget {
                           Pin(start: 0.0, end: 0.0),
                           child: Stack(
                             children: [
-// background:
                               Positioned.fill(
                                 child: Container(
                                   decoration: BoxDecoration(
@@ -1728,9 +1718,7 @@ class Main extends StatelessWidget {
                                               child: Pinned.fromPins(
                                                 Pin(size: 36.0, middle: 1.0),
                                                 Pin(start: 0.0, end: 1.0),
-                                                child:
-                                                    // Adobe XD layer: 'Icon_down arrow' (group)
-                                                    Stack(
+                                                child: Stack(
                                                   children: <Widget>[
                                                     Pinned.fromPins(
                                                       Pin(start: 5.1, end: 5.1),
@@ -1747,9 +1735,7 @@ class Main extends StatelessWidget {
                                                     Pinned.fromPins(
                                                       Pin(start: 0.0, end: 0.0),
                                                       Pin(start: 0.0, end: 0.0),
-                                                      child:
-                                                          // Adobe XD layer: '가이드 박스' (group)
-                                                          Stack(
+                                                      child: Stack(
                                                         children: <Widget>[
                                                           Pinned.fromPins(
                                                             Pin(
@@ -1863,9 +1849,7 @@ class Main extends StatelessWidget {
                                   Pinned.fromPins(
                                     Pin(start: 0.0, end: 0.0),
                                     Pin(start: 0.0, end: 0.0),
-                                    child:
-                                        // Adobe XD layer: '가이드 박스' (group)
-                                        Stack(
+                                    child: Stack(
                                       children: <Widget>[
                                         Pinned.fromPins(
                                           Pin(start: 0.0, end: 0.0),
@@ -1950,9 +1934,7 @@ class Main extends StatelessWidget {
                                     Pinned.fromPins(
                                       Pin(start: 0.0, end: 0.0),
                                       Pin(start: 0.0, end: 0.0),
-                                      child:
-                                          // Adobe XD layer: '가이드 박스' (group)
-                                          Stack(
+                                      child: Stack(
                                         children: <Widget>[
                                           Pinned.fromPins(
                                             Pin(start: 0.0, end: 0.0),
@@ -2049,9 +2031,7 @@ class Main extends StatelessWidget {
                                     Pinned.fromPins(
                                       Pin(start: 0.0, end: 0.0),
                                       Pin(start: 0.0, end: 0.7),
-                                      child:
-                                          // Adobe XD layer: '가이드 박스' (group)
-                                          Stack(
+                                      child: Stack(
                                         children: <Widget>[
                                           Pinned.fromPins(
                                             Pin(start: 0.0, end: 0.0),
@@ -2096,9 +2076,7 @@ class Main extends StatelessWidget {
                 Pinned.fromPins(
                   Pin(start: 0.0, end: 0.0),
                   Pin(size: 2.0, start: 0.0),
-                  child:
-                      // Adobe XD layer: 'Line' (shape)
-                      Container(
+                  child: Container(
                     decoration: BoxDecoration(
                       color: const Color(0xffffffff),
                       border: Border.all(
