@@ -1,0 +1,24 @@
+- name: Github
+  link: "https://github.com/osamhack2021/IoT_GateKeyPer_Keeper"
+  new_window: true
+  highlight: false
+- name: Gitbook
+  link: "https://osam-gatekeyper.gitbook.io/gatekeyper/"
+  new_window: true
+  highlight: false
+- name: Notion
+  link: "https://muddy-allosaurus-08e.notion.site/Gatekeyper-402bd2fad2244c1cb129c479f8ef488a"
+  new_window: true
+  highlight: false
+- name: Slack
+  link: "https://join.slack.com/t/gatekeyper/shared_invite/zt-wm2bj0nn-6biusY3775occ~cl0T93IQ"
+  new_window: true
+  highlight: false
+- name: Login
+  link: /
+  new_window: false
+  highlight: false
+- name: Sign Up
+  link: /
+  new_window: false
+  highlight: true
