@@ -26,6 +26,7 @@ Adafruit_Fingerprint finger = Adafruit_Fingerprint(&mySerial);
 #endif
 
 
+
 #define MAX_REQUEST 50
 #define SCAN_WAITING_TIME 10000 //10000ms
 #define GREEN_WAITING_TIME 5000 //5000ms
