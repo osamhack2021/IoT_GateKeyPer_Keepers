@@ -1,6 +1,5 @@
 <!-- PROJECT LOGO -->
 <p align="center">
-   <br />
    <h1 align="center"><국방부장관상 수상><br><br>[2021 군장병 공개 SW 온라인 해커톤]</h1><p align = "center">
 <a href="https://github.com/osamhack2021/IoT_GateKeyPer_Keeper/blob/master/LICENSE"><img alt="arduino license" src="https://img.shields.io/badge/license-BSD--3--Clause%7CGPL--v3-green?style=for-the-badge&logo=Arduino"></a><a>    </a><a href="https://github.com/osamhack2021/IoT_GateKeyPer_Keeper/blob/master/LICENSE"><img alt="WEB license" src="https://img.shields.io/badge/license-MIT-green?style=for-the-badge&logo=HTML5"></a><a>    </a><a href="https://github.com/osamhack2021/IoT_GateKeyPer_Keeper/issues"><img alt="GitHub issues" src="https://img.shields.io/github/issues/osamhack2021/IoT_GateKeyPer_Keeper?style=for-the-badge"></a><a>    </a><a href="https://github.com/osamhack2021/IoT_GateKeyPer_Keeper/network"><img alt="GitHub forks" src="https://img.shields.io/github/forks/osamhack2021/IoT_GateKeyPer_Keeper?style=for-the-badge"></a><a>    </a><a href="https://github.com/osamhack2021/IoT_GateKeyPer_Keeper/stargazers"><img alt="GitHub stars" src="https://img.shields.io/github/stars/osamhack2021/IoT_GateKeyPer_Keeper?style=for-the-badge"></a><a>    </a><a><img alt="Version" src="https://img.shields.io/badge/ver-v1.0.1-orange?style=for-the-badge"></a></p>
     <br /><p align="center">
