@@ -35,12 +35,12 @@ https://bit.ly/gatekeyper_github
 https://bit.ly/gatekeyper_prototype
 
 과 같이 줄임 링크도 있음. 국방부 상에서 bit.ly를 막기 때문에 혹시나 하여 원본 링크로 제출-->
-
+<!--
 - #### [**Gitbook**](https://osam-gatekeyper.gitbook.io/gatekeyper/) for documentation
 
 - #### [**_Notion_**](https://muddy-allosaurus-08e.notion.site/Gatekeyper-402bd2fad2244c1cb129c479f8ef488a) for collaboration
 - #### [**_Landing Page_**](https://gatekeyper.github.io/) Page for client
-
+-->
 <!-- LICENSE -->
 
 ## License
