@@ -54,7 +54,7 @@ https://bit.ly/gatekeyper_prototype
 ## Contact
 
 - Boksung,Oh (boksung@sol-dynamics.com), Github Id: BoksungOh
-- Changhyun,Nam (tabloni0719@ajou.ac.kr), Github Id : TabloNi
+- Changhyun,Nam (tabloni.work@gmail.com), Github Id : TabloNi
 <!-- Copyright -->
 
 ## Copyright
